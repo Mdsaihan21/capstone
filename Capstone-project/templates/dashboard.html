@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">
+Dashboard
+</h1>
+
+<div class="grid md:grid-cols-3 gap-6 mb-8">
+
+<div class="bg-white rounded-xl shadow-lg p-6 hover:scale-105 transition">
+
+<div class="flex justify-between">
+
+<div>
+<p class="text-gray-500">Total Equipment</p>
+<h2 class="text-4xl font-bold">
+{{ total_equipment }}
+</h2>
+</div>
+
+<i class="fa-solid fa-laptop-medical text-blue-600 text-5xl"></i>
+
+</div>
+
+</div>
+
+<div class="bg-green-100 rounded-xl shadow-lg p-6 hover:scale-105 transition">
+
+<div class="flex justify-between">
+
+<div>
+<p>Active</p>
+<h2 class="text-4xl font-bold">
+{{ active_equipment }}
+</h2>
+</div>
+
+<i class="fa-solid fa-circle-check text-green-600 text-5xl"></i>
+
+</div>
+
+</div>
+
+<div class="bg-red-100 rounded-xl shadow-lg p-6 hover:scale-105 transition">
+
+<div class="flex justify-between">
+
+<div>
+<p>Maintenance</p>
+<h2 class="text-4xl font-bold">
+{{ maintenance_count }}
+</h2>
+</div>
+
+<i class="fa-solid fa-screwdriver-wrench text-red-600 text-5xl"></i>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="/equipment/add"
+class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg shadow">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Equipment
+
+</a>
+
+<div class="bg-white shadow-lg rounded-xl overflow-hidden mt-6">
+
+<table class="min-w-full">
+
+<thead class="bg-blue-800 text-white">
+
+<tr>
+<th class="py-3 px-4">ID</th>
+<th class="py-3 px-4">Equipment</th>
+<th class="py-3 px-4">Department</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4">Actions</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for e in equipments %}
+
+<tr class="border-b hover:bg-gray-50">
+
+<td class="px-4 py-3">{{ e.equipment_id }}</td>
+
+<td class="px-4 py-3">{{ e.equipment_name }}</td>
+
+<td class="px-4 py-3">{{ e.department }}</td>
+
+<td class="px-4 py-3">
+
+{% if e.status == 'Active' %}
+
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+{{ e.status }}
+</span>
+
+{% else %}
+
+<span class="bg-red-100 text-red-700 px-3 py-1 rounded-full">
+{{ e.status }}
+</span>
+
+{% endif %}
+
+</td>
+
+<td class="px-4 py-3">
+
+<a href="/maintenance/{{ e.equipment_id }}"
+class="text-blue-600 mr-4">
+
+<i class="fa-solid fa-eye"></i>
+
+</a>
+
+<a href="/equipment/delete/{{ e.equipment_id }}"
+class="text-red-600">
+
+<i class="fa-solid fa-trash"></i>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

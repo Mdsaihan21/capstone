@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Management System</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="bg-gradient-to-r from-slate-100 to-blue-100 min-h-screen">
+
+<nav class="bg-blue-900 shadow-lg">
+
+    <div class="max-w-7xl mx-auto px-4">
+
+        <div class="flex justify-between h-16 items-center">
+
+            <div class="flex items-center gap-3">
+
+                <i class="fa-solid fa-screwdriver-wrench text-white text-2xl"></i>
+
+                <h1 class="text-white text-xl font-bold">
+                    MediTrack
+                </h1>
+
+            </div>
+
+            <div class="space-x-6">
+
+                <a href="/" class="text-white hover:text-blue-300">
+                    Dashboard
+                </a>
+
+                <a href="/equipment/add"
+                class="text-white hover:text-blue-300">
+                    Add Equipment
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="max-w-7xl mx-auto p-6">
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
+{% for category,message in messages %}
+
+<div class="bg-green-100 border-l-4 border-green-500 p-4 rounded-lg mb-4 animate-pulse">
+    {{ message }}
+</div>
+
+{% endfor %}
+
+{% endif %}
+{% endwith %}
+
+{% block content %}
+{% endblock %}
+
+</div>
+
+</body>
+</html>

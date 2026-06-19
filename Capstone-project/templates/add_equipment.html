@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">
+Add Equipment
+</h1>
+
+<form method="POST"
+class="bg-white p-8 rounded-xl shadow-lg">
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<input name="equipment_name"
+placeholder="Equipment Name"
+required
+class="border rounded-lg p-3">
+
+<input name="serial_number"
+placeholder="Serial Number"
+required
+class="border rounded-lg p-3">
+
+<input name="department"
+placeholder="Department"
+class="border rounded-lg p-3">
+
+<input type="date"
+name="purchase_date"
+class="border rounded-lg p-3">
+
+<select name="status" required
+class="border rounded-lg p-3">
+
+    <option value="Active">Active</option>
+
+    <option value="Maintenance">Maintenance</option>
+
+    <option value="Inactive">Inactive</option>
+
+</select>
+</div>
+
+<button
+class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+ Save Equipment
+
+</button>
+
+</form>
+
+{% endblock %}

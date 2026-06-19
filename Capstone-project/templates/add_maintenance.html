@@ -1,49 +1,56 @@
-<h2>Add Maintenance</h2>
+{% extends 'base.html' %}
 
+{% block content %}
 
-<form method="post">
+<h1 class="text-3xl font-bold mb-6">
+Add Maintenance
+</h1>
 
+<form method="POST"
+class="bg-white p-8 rounded-xl shadow-lg">
 
-Date:
-<input type="date"
-name="maintenance_date">
+<div class="grid gap-4">
 
+<input
+type="date"
+name="maintenance_date"
+required
+class="border rounded-lg p-3">
 
-<br>
+<input
+name="technician_name"
+placeholder="Technician Name"
+required
+class="border rounded-lg p-3">
 
+<textarea
+name="issue_reported"
+placeholder="Issue Reported"
+class="border rounded-lg p-3">
+</textarea>
 
-Technician:
-<input name="technician_name">
+<textarea
+name="resolution_notes"
+placeholder="Resolution Notes"
+class="border rounded-lg p-3">
+</textarea>
 
+<input
+type="date"
+name="next_due_date"
+class="border rounded-lg p-3">
 
-<br>
+</div>
 
+<button
+class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
 
-Issue:
-<textarea name="issue_reported"></textarea>
+<i class="fa-solid fa-floppy-disk"></i>
 
+ Save Maintenance
 
-<br>
-
-
-Resolution:
-<textarea name="resolution_notes"></textarea>
-
-
-<br>
-
-
-Next Due:
-<input type="date"
-name="next_due_date">
-
-
-<br>
-
-
-<button>
-Save
 </button>
 
-
 </form>
+
+{% endblock %}
